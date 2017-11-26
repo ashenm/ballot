@@ -1,0 +1,32 @@
+{
+  "name": "ballot",
+  "version": "0.0.1",
+  "description": "A freeCodeCamp API Project - A Voting App",
+  "main": "ballot.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashenm/ballot.git"
+  },
+  "keywords": [
+    "ashen",
+    "gunaratne",
+    "freecodecamp",
+    "projects",
+    "api"
+  ],
+  "author": "Ashen Gunaratne <mail@ashenm.ml>",
+  "license": "ISC",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/ashenm/ballot/issues"
+  },
+  "homepage": "https://github.com/ashenm/ballot#readme",
+  "dependencies": {
+    "compression": "^1.7",
+    "nunjucks": "^3.0",
+    "sqlite3": "^3.0"
+  }
+}
