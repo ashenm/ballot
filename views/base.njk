@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Create and vote questionaries" />
+  <meta name="keywords" content="ashen gunaratne freecodecamp projects api" />
+  <meta name="author" content="Ashen Gunaratne" />
+
+  <title>{{ title }}</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+
+  {% block metadata %}{% endblock %}
+
+  <!-- inject pen.js and its dependencies -->
+  <script type="text/javascript">
+
+    /**
+     * Returns a `Promise` that resolves once the
+     * parameterised external script has been successfully
+     * injected into the document head or rejects otherwise
+     */
+    function importScript(url, integrity) {
+      return new Promise((resolve, reject) => {
+
+        // a HTMLScriptElement
+        const eScript = document.createElement('script');
+
+        // formulate HTMLScriptElement
+        eScript.setAttribute('type', 'text\/javascript');
+        eScript.setAttribute('crossorigin', 'anonymous');
+        eScript.setAttribute('integrity', integrity || '');
+        eScript.setAttribute('src', url);
+
+        // associate event handlers for
+        // promise resolution and rejection
+        eScript.addEventListener('load', resolve);
+        eScript.addEventListener('error', reject);
+
+        // inject script as last children of `head`
+        document.head.appendChild(eScript);
+
+      });
+    }
+
+    /**
+     * Returns a `Promise` that resolves once the
+     * parameterised external resource has been successfully
+     * injected into the document head or rejects otherwise
+     */
+    function importResource(url, relation, integrity) {
+      return new Promise((resolve, reject) => {
+
+        // a HTMLLinkElement
+        const eResource = document.createElement('link');
+
+        // formulate HTMLScriptElement
+        eResource.setAttribute('rel', relation);
+        eResource.setAttribute('crossorigin', 'anonymous');
+        eResource.setAttribute('integrity', integrity || '');
+        eResource.setAttribute('href', url);
+
+        // inject resource into head immediately before current script
+        document.head.insertBefore(eResource, document.currentScript);
+
+      });
+    }
+
+    /**
+     * Injects `pen.js` with its dependent libraries
+     * after DOM and its all sub-resources have been loaded 
+     */
+    document.onreadystatechange = function() {
+      if (document.readyState === 'complete') {
+        (async function() {
+          await importScript('//code.jquery.com/jquery-3.2.1.slim.min.js', 'sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN');
+          await importScript('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js', 'sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh');
+          await importScript('//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js', 'sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ');
+          await importScript('/js/components/pen.js');
+          await importResource('//cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css', 'stylesheet', 'sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=');
+        })();
+      }
+    };
+
+  </script>
+
+  {% block scripts %}{% endblock %}
+
+</head>
+<body>
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  <main>
+    {% block main %}{% endblock %}
+  </main>
+  <footer>
+    {% block footer %}{% endblock %}
+  </footer>
+</body>
+</html>
