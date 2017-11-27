@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/ashenm/ballot#readme",
   "dependencies": {
+    "body-parser": "^1.18",
     "compression": "^1.7",
+    "express": "^4.16.2",
     "nunjucks": "^3.0",
     "sqlite3": "^3.0"
   }
